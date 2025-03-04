@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { Card } from './components/Card'
 import { loadedCards } from './utils/utils'
-import { useGameLogic } from './gameLogic/gameLogic'
+import { useGameLogic } from './hooks/useGameLogic'
 import { CardType } from './types/types'
 import { Player } from './components/Player'
 
