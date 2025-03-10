@@ -19,19 +19,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   font-size: 2em;
   font-weight: bold;
   margin-top: 100px;
+  height: 150px;
+  width: 200px;
+  border: 4px solid black;
 }
 
 .score, .active{
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid rgb(0, 0, 0);
-  margin-top: 10px;
   background-color: rgb(149, 206, 187);
 }
 
@@ -41,17 +44,17 @@
 
 .board{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;
-    min-width: 50vw;
-    min-height: 50vh;
+    padding: 10px;
+    background-color: rgb(49, 47, 47);
 }
 
 
 .card {
   position: relative;
-  width: 70px;
-  height: 90px;
+  width: 100px;
+  height: 120px;
 }
 
 .card-inner {

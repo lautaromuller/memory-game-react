@@ -6,7 +6,7 @@ import { useGameLogic } from './hooks/useGameLogic'
 import { CardType } from './types/types'
 import { Player } from './components/Player'
 
-const data: string[] = ["Azurduy","Belgrano","Guemes","Mitre","Moreno","Quiroga","Rivadavia","Roca","Rosas","Saavedra","San_Martin","Sarmiento"]
+const data: string[] = ["Azurduy","Belgrano","Guemes","Mitre","Moreno","Quiroga","Rivadavia","Roca","Rosas","Saavedra","San_Martin","Sarmiento","Alberdi","Urquiza"]
 
 function App() {
   const [cards, setCards] = useState<CardType[]>([]);
@@ -28,6 +28,7 @@ function App() {
             <Card
               key={card.id}
               id={card.id}
+              name={card.name}
               imageSrc={card.selected ? `/${card.name}.jpg` : '❓'}
               selected={handleSelected}
               selectedCard={card.selected}
