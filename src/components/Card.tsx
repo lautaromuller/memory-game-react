@@ -1,14 +1,23 @@
 type Props = {
   id: number
-  name: string
+  imageSrc: string
   selectedCard: boolean
   selected: (id: number) => void
 }
 
-export const Card = ({ id, name, selectedCard, selected }: Props) => {
+export const Card = ({ id, imageSrc, selectedCard, selected }: Props) => {
   return (
-    <button onClick={() => selected(id)} className={selectedCard ? 'selected' : 'card'}>
-      {name}
-    </button>
+    <div className="card">
+      <div className={`card-inner ${selectedCard ? 'flipped' : ''}`}>
+        <button onClick={() => selected(id)} className="card-btn">
+          <div className="card-front">
+            {imageSrc === '❓' ? <span style={{backgroundColor: "transparent"}}>❓</span> : <img src={imageSrc} style={{width: "70px", height: "90px"}}></img>}
+          </div>
+          <div className="card-back">
+            ❓
+          </div>
+        </button>
+      </div>
+    </div>
   )
 }
