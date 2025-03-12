@@ -12,7 +12,10 @@ export const Card = ({ id, name, imageSrc, selectedCard, selected }: Props) => {
       <div className={`card-inner ${selectedCard ? 'flipped' : ''}`}>
         <button onClick={() => selected(id)} className="card-btn">
           <div className="card-front">
-            {imageSrc === '❓' ? <img src="/public/Escudo.png" style={{width: "80px", height: "90px"}}/> : <img src={imageSrc} alt={`${name}`} title={`${name}`} style={{width: "90px", height: "110px"}}/>}
+            {imageSrc === '❓'
+              ? <img src="/public/Escudo.png" alt="Dorso de carta" className="imgCard-back" />
+              : <img src={imageSrc} alt={`Carta de ${name}`} title={`${name}`} className="imgCard" />
+            }
           </div>
           <div className="card-back">
             ❓

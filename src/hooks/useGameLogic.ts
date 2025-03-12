@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import { CardType } from "../types/types"
 
 type Props = {
@@ -12,8 +12,10 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
     const [scoreOne, setScoreOne] = useState<number>(0)
     const [scoreTwo, setScoreTwo] = useState<number>(0)
     const [turn, setTurn] = useState<boolean>(true) //true: jugador uno, false: jugador dos
+    const [started, setStarted] = useState<boolean>(false)
 
     const handleSelected = (id: number) => {
+        if(!started) setStarted(true)
         if (firstTurn && secondTurn) return
         setCards(prevCards => prevCards.map(card =>
             card.id === id ? { ...card, selected: true } : card
@@ -39,7 +41,7 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
             } else if (!turn) {
                 setScoreTwo(prevScore => prevScore + 1)
             }
-        }else{
+        } else {
             setTurn(!turn)
 
         }
@@ -51,10 +53,19 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
             setCards(prevCards => prevCards.map(card =>
                 card.selected && !card.correct ? { ...card, selected: false } : card
             ))
-        }, 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, 800);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [secondTurn])
 
-    return { handleSelected, scoreOne, scoreTwo, turn }
+    const resetGameLogic = () => {
+        setScoreOne(0)
+        setScoreTwo(0)
+        setTurn(true)
+        setFirstTurn(null)
+        setSecondTurn(null)
+        setStarted(false)
+      }
+
+    return { handleSelected, scoreOne, scoreTwo, turn, resetGameLogic, started }
 }
 

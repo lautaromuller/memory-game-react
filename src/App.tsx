@@ -5,8 +5,9 @@ import { loadedCards } from './utils/utils'
 import { useGameLogic } from './hooks/useGameLogic'
 import { CardType } from './types/types'
 import { Player } from './components/Player'
+import { WinnerMenu } from './components/winnerMenu'
 
-const data: string[] = ["Azurduy","Belgrano","Guemes","Mitre","Moreno","Quiroga","Rivadavia","Roca","Rosas","Saavedra","San_Martin","Sarmiento","Alberdi","Urquiza"]
+const data: string[] = ["Azurduy", "Belgrano", "Guemes", "Mitre", "Moreno", "Quiroga", "Rivadavia", "Roca", "Rosas", "Saavedra", "San_Martin", "Sarmiento", "Alberdi", "Urquiza", "Pellegrini"]
 
 function App() {
   const [cards, setCards] = useState<CardType[]>([]);
@@ -15,31 +16,39 @@ function App() {
     setCards(loadedCards(data))
   }, [])
 
-  const { handleSelected, scoreOne, scoreTwo, turn } = useGameLogic({ cards, setCards })
+  const { handleSelected, scoreOne, scoreTwo, turn, resetGameLogic, started } = useGameLogic({ cards, setCards })
+
+  const restartGame = () => {
+    setCards(loadedCards(data))
+    resetGameLogic()
+  }
 
   return (
-    <>
-      <h1 className='title'>MEMORY GAME</h1>
-      <div className='container'>
-        <Player score={scoreOne} text='Jugador 1' turn={turn}/>
+    <main className='game'>
+      <h1>MEMORY GAME</h1>
+      <button onClick={restartGame} className='buttonRestart'>Reiniciar Juego</button>
+      <section className='board'>
+        {cards.map(card => (
+          <Card
+            key={card.id}
+            id={card.id}
+            name={card.name}
+            imageSrc={card.selected ? `/${card.name}.jpg` : '❓'}
+            selected={handleSelected}
+            selectedCard={card.selected}
+          >
+          </Card>
+        ))}
+      </section>
 
-        <div className='board'>
-          {cards.map(card => (
-            <Card
-              key={card.id}
-              id={card.id}
-              name={card.name}
-              imageSrc={card.selected ? `/${card.name}.jpg` : '❓'}
-              selected={handleSelected}
-              selectedCard={card.selected}
-            >
-            </Card>
-          ))}
-        </div>
+      <section className='players'>
+        <Player score={scoreOne} turn={turn} />
+        <Player score={scoreTwo} turn={!turn} />
+      </section>
 
-        <Player score={scoreTwo} text='Jugador 2' turn={!turn}/>
-      </div>
-    </>
+      <WinnerMenu restartGame={restartGame} cards={cards} turn={turn} started={started} />
+
+    </main>
   )
 }
 
