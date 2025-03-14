@@ -33,7 +33,6 @@ function App() {
             key={card.id}
             id={card.id}
             name={card.name}
-            imageSrc={card.selected ? `/${card.name}.jpg` : '❓'}
             selected={handleSelected}
             selectedCard={card.selected}
           >

@@ -2,24 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #eee;
 }
 
 .game{
   text-align: center;
-  background-color: #a5a5b9;
+  background-color: #4e4e53;
   height: 100vh;
 }
 
 .game h1{
-  margin-bottom: 16px;
+  padding: 20px 0px;
 }
 
 .buttonRestart {
   padding: 8px 12px;
-  margin-bottom: 15px;
   background: transparent;
   border: 2px solid #eee;
-  color: #eee;
   width: 100px;
   border-radius: 5px;
   transition: 0.2s;
@@ -36,7 +35,7 @@
   display: grid;
   grid-template-columns: repeat(6,70px);
   grid-gap: 8px;
-  margin: 30px auto;
+  margin: 20px auto;
   width: max-content;
 }
 
@@ -57,7 +56,7 @@
   left: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(240, 238, 238, 0.7);
 }
 
 .winner-menu .text {
@@ -90,7 +89,8 @@
   margin: 0px 10px;
   font-weight: 700;
   font-size: 2em;
-  border: 2px solid #000;
+  border: 2px solid #ebe5e5;
+  color: #000000;
 }
 
 .active{
@@ -129,10 +129,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #918f8f;
+  border-radius: 10px;
 }
 
 .card-inner.flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.1);
+  border: none;
 }
 
 .card-btn {
@@ -163,6 +166,3 @@
 .card-back {
   transform: rotateY(180deg);
 }
-
-
-
