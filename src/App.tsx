@@ -5,7 +5,7 @@ import { loadedCards } from './utils/utils'
 import { useGameLogic } from './hooks/useGameLogic'
 import { CardType } from './types/types'
 import { Player } from './components/Player'
-import { WinnerMenu } from './components/winnerMenu'
+import { WinnerMenu } from './components/WinnerMenu'
 
 const data: string[] = ["Azurduy", "Belgrano", "Guemes", "Mitre", "Moreno", "Quiroga", "Rivadavia", "Roca", "Rosas", "Saavedra", "San_Martin", "Sarmiento", "Alberdi", "Urquiza", "Pellegrini"]
 
