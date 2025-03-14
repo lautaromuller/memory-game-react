@@ -42,7 +42,7 @@
 .players {
   display: flex;
   justify-content: center;
-  margin: 15px auto;
+  margin: 0px auto;
   width: fit-content;
   position: relative;
   border-radius: 10px;
@@ -56,7 +56,7 @@
   left: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(240, 238, 238, 0.7);
+  background-color: rgba(10, 10, 10, 0.7);
 }
 
 .winner-menu .text {

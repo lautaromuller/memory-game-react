@@ -15,8 +15,13 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
     const [started, setStarted] = useState<boolean>(false)
 
     const handleSelected = (id: number) => {
-        if(!started) setStarted(true)
+        if (!started) setStarted(true)
         if (firstTurn && secondTurn) return
+
+        const card = cards.find(card => card.id === id);
+        if (card?.selected || card?.correct) return;
+
+
         setCards(prevCards => prevCards.map(card =>
             card.id === id ? { ...card, selected: true } : card
         ))
@@ -53,7 +58,7 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
             setCards(prevCards => prevCards.map(card =>
                 card.selected && !card.correct ? { ...card, selected: false } : card
             ))
-        }, 800);
+        }, 500);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [secondTurn])
 
@@ -64,7 +69,7 @@ export const useGameLogic = ({ cards, setCards }: Props) => {
         setFirstTurn(null)
         setSecondTurn(null)
         setStarted(false)
-      }
+    }
 
     return { handleSelected, scoreOne, scoreTwo, turn, resetGameLogic, started }
 }

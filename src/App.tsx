@@ -45,7 +45,7 @@ function App() {
         <Player score={scoreTwo} turn={!turn} />
       </section>
 
-      <WinnerMenu restartGame={restartGame} cards={cards} turn={turn} started={started} />
+      <WinnerMenu restartGame={restartGame} cards={cards} started={started} scoreOne={scoreOne} scoreTwo={scoreTwo} />
 
     </main>
   )
